@@ -71,42 +71,43 @@ function App() {
   };
 
   const incrementBreak = () => {
-    if (!isRunning && breakLength < 60) {
+    if (breakLength < 60) {
       setBreakLength(breakLength + 1);
-      if (timerLabel === "Break") {
+      if (timerLabel === "Break" && !isRunning) {
         setTimeLeft((breakLength + 1) * 60);
       }
     }
   };
 
   const decrementBreak = () => {
-    if (!isRunning && breakLength > 1) {
+    if (breakLength > 1) {
       setBreakLength(breakLength - 1);
-      if (timerLabel === "Break") {
+      if (timerLabel === "Break" && !isRunning) {
         setTimeLeft((breakLength - 1) * 60);
       }
     }
   };
 
   const incrementSession = () => {
-    if (!isRunning && sessionLength < 60) {
+    if (sessionLength < 60) {
       setSessionLength(sessionLength + 1);
-      if (timerLabel === "Session") {
+      if (timerLabel === "Session" && !isRunning) {
         setTimeLeft((sessionLength + 1) * 60);
       }
     }
   };
 
   const decrementSession = () => {
-    if (!isRunning && sessionLength > 1) {
+    if (sessionLength > 1) {
       setSessionLength(sessionLength - 1);
-      if (timerLabel === "Session") {
+      if (timerLabel === "Session" && !isRunning) {
         setTimeLeft((sessionLength - 1) * 60);
       }
     }
   };
 
   const timeLeftClass = timeLeft <= 60 ? "time-left warning" : "time-left";
+
   return (
     <div className="app-wrapper">
       <div className="app-title">
@@ -117,26 +118,46 @@ function App() {
 
       <div className="timer-length-btns">
         <div className="break-length">
-          <span>break length</span>
+          <span id="break-label">Break Length</span>
           <div className="increment-decrement-btns">
-            <button onClick={decrementBreak} disabled={isRunning}>
+            <button
+              id="break-decrement"
+              onClick={decrementBreak}
+              disabled={isRunning}
+            >
               -
             </button>
-            <div className="length-display">{breakLength}</div>
-            <button onClick={incrementBreak} disabled={isRunning}>
+            <div className="length-display" id="break-length">
+              {breakLength}
+            </div>
+            <button
+              id="break-increment"
+              onClick={incrementBreak}
+              disabled={isRunning}
+            >
               +
             </button>
           </div>
         </div>
 
         <div className="session-length">
-          <span>session length</span>
+          <span id="session-label">Session Length</span>
           <div className="increment-decrement-btns">
-            <button onClick={decrementSession} disabled={isRunning}>
+            <button
+              id="session-decrement"
+              onClick={decrementSession}
+              disabled={isRunning}
+            >
               -
             </button>
-            <div className="length-display">{sessionLength}</div>
-            <button onClick={incrementSession} disabled={isRunning}>
+            <div className="length-display" id="session-length">
+              {sessionLength}
+            </div>
+            <button
+              id="session-increment"
+              onClick={incrementSession}
+              disabled={isRunning}
+            >
               +
             </button>
           </div>
@@ -144,17 +165,21 @@ function App() {
       </div>
 
       <div className="timer">
-        <span className="timer-title">{timerLabel}</span>
-        <span className={timeLeftClass} id={timeLeftClass}>
+        <span className="timer-label" id="timer-label">
+          {timerLabel}
+        </span>
+        <span className={timeLeftClass} id="time-left">
           {formatTime(timeLeft)}
         </span>
       </div>
 
       <div className="stop-reset-btns">
-        <button onClick={handleStartStop}>
+        <button id="start_stop" onClick={handleStartStop}>
           {isRunning ? "Pause" : "Start"}
         </button>
-        <button onClick={handleReset}>reset</button>
+        <button id="reset" onClick={handleReset}>
+          Reset
+        </button>
       </div>
 
       <audio
@@ -166,7 +191,11 @@ function App() {
 
       <span className="dev-info">
         Designed and coded by{" "}
-        <a href="https://www.linkedin.com/in/levis-mbui/" target="_blank">
+        <a
+          href="https://www.linkedin.com/in/levis-mbui/"
+          target="_blank"
+          rel="noreferrer"
+        >
           Levis Mbui
         </a>
       </span>

@@ -28,4 +28,5 @@ button:hover{
 button:disabled{
   background-color: rgb(211, 206, 206)!important;
   color: var(--primary-color)!important;
+  cursor: not-allowed;
 }
