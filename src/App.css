@@ -74,11 +74,15 @@ hr {
   font-weight: 500;
   font-family: var(--secondary-font);
 }
-.timer-countdown {
+.time-left {
   color: white;
   font-size: 4rem;
   font-weight: 800;
   font-family: var(--secondary-font);
+}
+.time-left.warning {
+  color: red;
+  animation: pulse 1s infinite;
 }
 .stop-reset-btns {
   width: 100%;
