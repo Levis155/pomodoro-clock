@@ -1,6 +1,7 @@
 :root {
   --primary-font: "Libre Franklin", sans-serif;
   --secondary-font: "Orbitron", sans-serif;
+  --primary-color: rgb(14, 154, 167);
 }
 * {
   margin: 0;
@@ -15,4 +16,12 @@ html {
 body {
   font-size: 1.6rem;
   font-family: var(--primary-font);
+}
+button{
+  cursor: pointer;
+  transition: all 0.4s!important;
+}
+button:hover{
+  background-color: white!important;
+  color: var(--primary-color)!important;
 }

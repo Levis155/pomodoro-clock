@@ -4,9 +4,9 @@ function App() {
   return (
     <div className="app-wrapper">
       <div className="app-title">
-        <hr />
+        <hr className="left-line" />
         <h1>pomodoro clock</h1>
-        <hr />
+        <hr className="right-line" />
       </div>
       
       <div className="timer-length-btns">
